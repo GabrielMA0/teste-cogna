@@ -46,7 +46,7 @@ export const HeroBanner = () => {
       style={{ backgroundImage: `url(${imagemFundo})` }}
     >
       <div className="absolute inset-0 bg-black/30"></div>
-      <div className="pl-15 w-180 flex flex-col gap-5 relative z-10 text-white px-4">
+      <div className="pl-5 md:pl-15 w-full md:w-180 flex flex-col gap-5 relative z-10 text-white px-4">
         <div className="flex flex-col gap-1">
             <h1>{titulo}</h1>
             <p>{subtitulo}</p>

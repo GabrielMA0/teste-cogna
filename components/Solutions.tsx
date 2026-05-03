@@ -19,9 +19,9 @@ export async function Solutions() {
     // ]
 
     return(
-        <section className="p-10 gap-16 flex flex-col items-center">
+        <section className="px-5 md:px-10 py-10 gap-16 flex flex-col items-center">
             <h2 className="text-primary">Nossas Soluções</h2>
-            <div className="flex gap-6">
+            <div className="flex gap-6 flex-wrap justify-center">
                 {solucoes.data.map((solucao: Solucao, index) => (
                     <CardSolutions
                         key={index}

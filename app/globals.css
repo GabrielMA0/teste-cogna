@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @theme {
     --font-roboto: var(--font-roboto);
     --font-inter: var(--font-inter);
@@ -20,6 +19,16 @@
     --leading-h2: 1.25;
     --leading-h3: 1.3;
     --leading-p1: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    @theme {
+        --text-h1: 2rem;
+        --text-h2: 1.75rem;
+        --text-h3: 1.25rem;
+        --text-p1: 1rem;
+    }
 }
 
 .centered {
