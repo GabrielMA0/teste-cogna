@@ -1,4 +1,4 @@
-import { HeroBanner, Solutions, Testimonials } from "@/components";
+import { CTASection, HeroBanner, Solutions, Testimonials } from "@/components";
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <HeroBanner />
       <Solutions />
       <Testimonials />
+      <CTASection />
     </main>
   );
 }
