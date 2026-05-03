@@ -1,0 +1,5 @@
+export { FacebookIcon } from './FacebookIcon'
+export { InstagramIcon } from './InstagramIcon'
+export { LinkedinIcon } from './LinkedinIcon'
+export { LogoFooterIcon } from './LogoFooterIcon'
+export { LogoIcon } from './LogoIcon'

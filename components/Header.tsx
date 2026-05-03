@@ -1,4 +1,4 @@
-import { LogoIcon } from "./ui/icons/LogoIcon";
+import { LogoIcon } from "@/components/ui/icons";
 import Link from "next/link";
 
 export const Header = () => {
