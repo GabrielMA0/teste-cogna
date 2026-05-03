@@ -13,6 +13,10 @@ export default async function SolucaoPage({
 
   const solucao = await getSolucaoBySlug(slug);
 
+  if (!solucao) {
+    notFound();
+  }
+  
   return (
     <main>
         <section className="relative py-10 px-5">

@@ -24,7 +24,7 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-    @theme {
+    :root {
         --text-h1: 2rem;
         --text-h2: 1.75rem;
         --text-h3: 1.25rem;
@@ -38,6 +38,10 @@
 }
 
 @layer components {
+    body {
+        color: var(--color-neutral);
+    }
+
     h1 {
         font-size: var(--text-h1);
         line-height: var(--leading-h1);
@@ -57,11 +61,5 @@
         line-height: var(--leading-h3);
         font-family: var(--font-inter);
         font-weight: 500;
-    }
-
-    p {
-        font-size: var(--text-p1);
-        line-height: var(--leading-p1);
-        font-family: var(--font-roboto);
     }
 }
