@@ -1,5 +1,9 @@
+import { HeroBanner } from "@/components";
+
 export default function Home() {
   return (
-    <h1>Hello, Next.js!</h1>
+    <main>  
+      <HeroBanner />
+    </main>
   );
 }

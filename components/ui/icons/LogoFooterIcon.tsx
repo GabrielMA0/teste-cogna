@@ -1,7 +1,7 @@
 export function LogoFooterIcon({className}: {className?: string}) {
     return(
         <svg className={className} width="128" height="361" viewBox="0 0 128 361" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_20_174)">
+            <g clipPath="url(#clip0_20_174)">
                 <mask id="mask0_20_174" mask-type="luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="361">
                     <path d="M127.691 0H0V360.06H127.691V0Z" fill="white"/>
                 </mask>
