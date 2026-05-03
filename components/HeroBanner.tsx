@@ -2,7 +2,7 @@
 
 import { getHeroBanner } from "@/services/strapi";
 import { useEffect, useState } from "react";
-import {Button} from "./ui/Button";
+import {Button} from "@/components/ui";
 
 interface HeroBannerProps {
   titulo: string;

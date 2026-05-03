@@ -12,6 +12,7 @@ export function Button({
   text,
   variant = "primary",
   url,
+  ...props
 }: ButtonProps) {
   const baseClasses =
     "p-5 flex w-fit items-center gap-2.5 rounded-[10] transition-colors duration-300";
@@ -33,14 +34,14 @@ export function Button({
 
   if (url) {
     return (
-      <a href={url} className={`${baseClasses} ${variantClasses}`}>
+      <a href={url} className={`${baseClasses} ${variantClasses}`} {...props}>
         {content}
       </a>
     );
   }
 
   return (
-    <button className={`${baseClasses} ${variantClasses}`}>
+    <button className={`${baseClasses} ${variantClasses}`} {...props}>
       {content}
     </button>
   );

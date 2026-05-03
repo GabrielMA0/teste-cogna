@@ -10,7 +10,7 @@ export const Header = () => {
         <nav>
             <ul className="flex gap-8">
                 <li>
-                    <Link href="/sobre" className="text-p1 text-neutral hover:text-hover hover:border-b pb-1">
+                    <Link href="/" className="text-p1 text-neutral hover:text-hover hover:border-b pb-1">
                         Início
                     </Link>
                 </li>
