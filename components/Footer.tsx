@@ -21,7 +21,7 @@ export function Footer() {
 
     return(
         <footer className="bg-neutral py-15 px-9">
-            <div className="max-w-360 mx-auto flex flex-col md:flex-row gap-12 w-full">
+            <div className="centered flex flex-col md:flex-row gap-12 w-full">
                 <LogoFooterIcon className="w-12 h-33.75 md:w-32 md:h-90.25" />
 
                 <div className="flex flex-col gap-8 w-full">

@@ -4,6 +4,7 @@ interface ButtonProps {
   text: string;
   variant?: "primary" | "secondary" | "tertiary";
   url?: string;
+  className?: string;
 }
 
 export function Button({
@@ -12,6 +13,7 @@ export function Button({
   text,
   variant = "primary",
   url,
+  className = "",
   ...props
 }: ButtonProps) {
   const baseClasses =
@@ -34,7 +36,7 @@ export function Button({
 
   if (url) {
     return (
-      <a href={url} className={`${baseClasses} ${variantClasses}`} {...props}>
+      <a href={url} className={`${baseClasses} ${variantClasses} ${className}`} {...props}>
         {content}
       </a>
     );

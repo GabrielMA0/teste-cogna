@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="bg-[#ffff] mx-auto gap-5 max-w-360 relative text-neutral px-5 py-10 flex flex-col md:flex-row items-center justify-center border-b border-black/20">
+    <header className="bg-[#ffff] centered gap-5 relative text-neutral px-5 py-10 flex flex-col md:flex-row items-center justify-center border-b border-black/20">
         <Link href="/" className="relative md:absolute md:left-5">
             <LogoIcon className="cursor-pointer" />
         </Link>

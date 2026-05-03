@@ -30,7 +30,7 @@ export function CardSolutions({title, description, icon, slug, audience, emphasi
             <div className="flex justify-between w-full">
                     <Button
                         text="Saiba mais"
-                        url={slug}
+                        url={`/solucoes/${slug}`}
                         variant="secondary"
                     />
 
