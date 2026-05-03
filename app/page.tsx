@@ -1,10 +1,10 @@
-import { CTASection, HeroBanner, Solutions, Testimonials } from "@/components";
+import { CTASection, HeroBanner, SolutionsSection, Testimonials } from "@/components";
 
 export default function Home() {
   return (
     <main>  
       <HeroBanner />
-      <Solutions />
+      <SolutionsSection title="Nossas Soluções" showAudience={false} showBtnSolucoes={true} />
       <Testimonials />
       <CTASection />
     </main>

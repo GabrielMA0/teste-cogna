@@ -52,9 +52,7 @@ export function Footer() {
                     </div>
                     
 
-                    <div className="text-white text-center">
-                        <p>&copy; {new Date().getFullYear()} Cogna Educação. Todos os direitos reservados.</p>
-                    </div>
+                    <p className="text-white text-center md:text-left">&copy; {new Date().getFullYear()} Cogna Educação. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
