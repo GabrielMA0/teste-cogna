@@ -14,7 +14,7 @@ export async function Footer() {
     return(
         <footer className="bg-neutral py-15 px-9">
             <div className="centered flex flex-col md:flex-row gap-12 w-full">
-                <Image src={baseUrl + logo.url} width={128} height={361} alt="logo cogna"/>
+                <Image src={baseUrl + logo.url} width={128} height={361} alt="logo cogna" className="w-12 h-33.75 md:w-32 md:h-90.25" />
 
                 <div className="flex flex-col gap-8 w-full">
                     <div className="flex flex-col gap-5 md:flex-row justify-between">

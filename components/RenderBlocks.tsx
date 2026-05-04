@@ -1,10 +1,12 @@
-import { CTASection, HeroBanner, SolutionsSection, Testimonials } from '@/components';
+import { CTASection, HeroBanner, SolutionsSection, Testimonials, EducationHeroSection, BenefitsSolutions} from '@/components';
 
 const componentMap = {
   ComponentSectionsHeroBannerSection: HeroBanner,
   ComponentSectionsSolucoes: SolutionsSection,
   ComponentSectionsDepoimentos: Testimonials,
   ComponentSectionsCta: CTASection,
+  ComponentSectionsEducacaoHero: EducationHeroSection,
+  ComponentSectionsBeneficiosSecao: BenefitsSolutions
 };
 
 export function RenderBlocks({ blocks }: { blocks: any[] }) {

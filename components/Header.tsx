@@ -20,8 +20,8 @@ export async function Header() {
         </Link>
         <nav>
             <ul className="flex gap-8">
-                {menu.map((item: MenuItem) => (
-                    <li key={item.id}>
+                {menu.map((item: MenuItem, index) => (
+                    <li key={index}>
                         <Link href={item.url} className="text-p1 text-neutral hover:text-hover hover:border-b pb-1">
                             {item.label}
                         </Link>

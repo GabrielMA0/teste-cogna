@@ -1,11 +1,12 @@
 const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
-export async function getPage(slug: string) {
+export async function getPage(slug: string, categoria?: string) {
   const query = `
-    query GetPage($slug: String!) {
-  pages(filters: { slug: { eq: $slug } }) {
+    query GetPage($slug: String! ${categoria ? ", $categoria: String!" : ""}) {
+  pages(filters: { slug: { eq: $slug } ${categoria ? ", categoria: { eq: $categoria }" : ""} }) {
     documentId
     slug
+    categoria
     body {
       __typename
 
@@ -62,6 +63,25 @@ export async function getPage(slug: string) {
         textoBotao
         urlBotao
       }
+
+      ... on ComponentSectionsEducacaoHero{
+        id
+        titulo
+        descricao
+        icone {
+          url
+        }
+        publicoAlvo
+      }
+
+      ... on ComponentSectionsBeneficiosSecao{
+        id
+        titulo
+        descricao
+        beneficios {
+          texto
+        }
+      }
     }
   }
 }
@@ -74,13 +94,23 @@ export async function getPage(slug: string) {
     },
     body: JSON.stringify({
       query,
-      variables: { slug },
+      variables: { slug, categoria },
     }),
   })
 
   const json = await res.json()
 
-  return json.data.pages[0]
+   if (json.errors) {
+    console.error("GraphQL Errors:", json.errors);
+    return null;
+  }
+
+  if (!json.data?.pages) {
+    console.error("No data returned:", json);
+    return null;
+  }
+
+  return json.data.pages[0] ?? null;
 }
 
 export async function getFooter() {
@@ -144,3 +174,27 @@ export async function getHeader() {
 
   return json.data.menu
 }
+
+// export async function getPagesByCategory(categoria: string) {
+//   const query = `
+//     query GetPagesByCategory($categoria: String!) {
+//       pages(filters: { slug: { eq: $categoria } }) {
+//         slug
+//       }
+//     }`
+
+//   const res = await fetch(`${baseUrl}/graphql`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       query,
+//       variables: { categoria },
+//     }),
+//   })
+
+//   const json = await res.json()
+
+//   return json.data.pages
+// }

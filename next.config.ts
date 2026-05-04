@@ -22,5 +22,5 @@ const nextConfig: NextConfig = {
     domains: ["localhost"],
   },
 };
-
+  
 export default nextConfig;

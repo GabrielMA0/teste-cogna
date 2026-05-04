@@ -11,9 +11,9 @@ export function BenefitsSolutions(props: BenefitsSolutionsProps) {
     const {beneficios, titulo, descricao} = props
 
     return(
-        <section className="flex flex-col py-25 px-5 bg-primary">
-            <div className="flex flex-col gap-8">
-                <div>
+        <section className="flex flex-col py-25 px-5 bg-primary text-white">
+            <div className="flex flex-col gap-8 centered">
+                <div className="text-center flex flex-col gap-2.5">
                     <h2>{titulo}</h2>
                     <p>{descricao}</p>
                 </div>
