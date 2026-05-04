@@ -31,7 +31,7 @@ export async function Header() {
   return (
     <header className="bg-[#ffff] centered gap-5 relative text-neutral px-5 py-10 flex flex-col md:flex-row items-center justify-center border-b border-black/20">
         <Link href="/" className="relative md:absolute md:left-5">
-            <Image src={baseUrl + logo.url} alt="Logo Cogna" className="w-32 h-auto" width={128} height={47} />
+            <Image src={baseUrl + logo?.url} alt="Logo Cogna" className="w-32 h-auto" width={128} height={47} />
         </Link>
         <nav>
             <ul className="flex gap-8">
