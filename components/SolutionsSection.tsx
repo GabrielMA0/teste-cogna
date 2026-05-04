@@ -1,5 +1,23 @@
 import { CardSolutions } from "@/components/ui";
-import { SolucaoAttributes } from "@/types";
+export interface ImageAttributes {
+  url: string;
+}
+
+export interface SolucaoAttributes {
+  nome: string;
+  slug?: string;
+  descricaoBreve: string;
+  descricaoCompleta?: string;
+  publicoAlvo?: string;
+  beneficios?: string[];
+  destaque: boolean;
+  icone: ImageAttributes;
+  botoes?: {
+    textoBotao: string;
+    urlBotao: string;
+  }[];
+}
+
 interface SolutionsSectionProps {
     ctaTitulo?: string;
     descricao?: string;

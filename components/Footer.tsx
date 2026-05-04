@@ -3,9 +3,28 @@ import Image from "next/image";
 import { getFooter } from "@/services/strapi";
 import { LinkedinIcon, InstagramIcon, FacebookIcon  } from "@/components/ui/icons";
 
+interface FooterSocialLink {
+    socialNetwork: string;
+    url: string;
+}
+
+interface FooterLink {
+    label: string;
+    url: string;
+}
+
+interface FooterData {
+    logo: {
+        url: string;
+    };
+    copyright: string;
+    socialLink: FooterSocialLink[];
+    link: FooterLink[];
+}
+
 export async function Footer() {
 
-    const footerData = await getFooter();
+    const footerData: FooterData = await getFooter();
 
     const { logo, copyright, socialLink, link } = footerData;
 

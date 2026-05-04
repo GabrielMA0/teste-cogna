@@ -1,13 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import {getHeader} from "@/services/strapi";
-import type {Header, MenuItem} from "@/types";
+
+export interface MenuItem {
+  id: number;
+  label: string;
+  url: string;
+}
+
+export interface HeaderProps {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  logo: {url: string};
+  menu: MenuItem[];
+}
 
 export async function Header() {
     
     const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-    const headerData: Header | null = await getHeader();
+    const headerData: HeaderProps | null = await getHeader();
 
     if (!headerData) return null;
 
