@@ -23,51 +23,80 @@ interface FooterData {
 }
 
 export async function Footer() {
+  const footerData: FooterData | null = await getFooter();
 
-    const footerData: FooterData = await getFooter();
+  if (!footerData) return null;
 
-    const { logo, copyright, socialLink, link } = footerData;
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const logoUrl = footerData.logo?.url
+    ? baseUrl + footerData.logo.url
+    : null;
 
-    return(
-        <footer className="bg-neutral py-15 px-9">
-            <div className="centered flex flex-col md:flex-row gap-12 w-full">
-                <Image src={baseUrl + logo.url} width={128} height={361} alt="logo cogna" className="w-12 h-33.75 md:w-32 md:h-90.25" />
+  const socialLink = footerData.socialLink ?? [];
+  const links = footerData.link ?? [];
 
-                <div className="flex flex-col gap-8 w-full">
-                    <div className="flex flex-col gap-5 md:flex-row justify-between">
-                        <nav>
-                            <ul className="flex flex-col gap-2">
-                                {link.map((link, index) => (
-                                    <li key={index}>
-                                        <Link href={link.url} className="text-p1 text-white hover:border-b">
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
+  return (
+    <footer className="bg-neutral py-15 px-9">
+      <div className="centered flex flex-col md:flex-row gap-12 w-full">
 
-                        <div>
-                            <ul className="flex items-center justify-center gap-4">
-                                {socialLink.map((link, index) => (
-                                    <li key={index}>
-                                        <Link href={link.url} className="text-p1 w-13 h-13 flex items-center justify-center rounded-full bg-primary">
-                                            {link.socialNetwork === 'Facebook' && <FacebookIcon className="w-5 h-5 text-white" />}
-                                            {link.socialNetwork === 'Instagram' && <InstagramIcon className="w-5 h-5 text-white" />}
-                                            {link.socialNetwork === 'Linkedin' && <LinkedinIcon className="w-5 h-5 text-white" />}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                    
+        {logoUrl && (
+          <Image
+            src={logoUrl}
+            width={128}
+            height={361}
+            alt="logo cogna"
+            className="w-12 h-33.75 md:w-32 md:h-90.25"
+          />
+        )}
 
-                    <p className="text-white text-center md:text-left">{copyright}</p>
-                </div>
+        <div className="flex flex-col gap-8 w-full">
+
+          <div className="flex flex-col gap-5 md:flex-row justify-between">
+
+            <nav>
+              <ul className="flex flex-col gap-2">
+                {links.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.url} className="text-p1 text-white hover:border-b">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div>
+              <ul className="flex items-center justify-center gap-4">
+                {socialLink.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      href={item.url}
+                      className="text-p1 w-13 h-13 flex items-center justify-center rounded-full bg-primary"
+                    >
+                      {item.socialNetwork === "Facebook" && (
+                        <FacebookIcon className="w-5 h-5 text-white" />
+                      )}
+                      {item.socialNetwork === "Instagram" && (
+                        <InstagramIcon className="w-5 h-5 text-white" />
+                      )}
+                      {item.socialNetwork === "Linkedin" && (
+                        <LinkedinIcon className="w-5 h-5 text-white" />
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-        </footer>
-    )
+
+          </div>
+
+          <p className="text-white text-center md:text-left">
+            {footerData.copyright}
+          </p>
+
+        </div>
+      </div>
+    </footer>
+  );
 }
