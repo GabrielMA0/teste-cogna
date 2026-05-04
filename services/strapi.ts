@@ -1,8 +1,22 @@
-// const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+
+export async function getHeader() {
+  try {
+    const response = await fetch(`${baseUrl}/api/menu?populate=*`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch header');
+    }
+    const data: HeaderResponse = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Error fetching header:', error);
+    return null;
+  }
+}
 
 // export async function getHeroBanner() {
 //   try {
-//     const response = await fetch(`${STRAPI_URL}/api/hero-banners?filters[active][$eq]=true&populate=*`);
+//     const response = await fetch(`${baseUrl}/api/hero-banners?filters[active][$eq]=true&populate=*`);
 //     if (!response.ok) {
 //       throw new Error('Failed to fetch hero banner');
 //     }
@@ -16,7 +30,7 @@
 
 // export async function getSolucoes() {
 //   try {
-//     const response = await fetch(`${STRAPI_URL}/api/solucoes?populate=*`);
+//     const response = await fetch(`${baseUrl}/api/solucoes?populate=*`);
 //     if (!response.ok) {
 //       throw new Error('Failed to fetch solucoes');
 //     }
@@ -30,7 +44,7 @@
 
 // export async function getSolucaoBySlug(slug: string) {
 //   try {
-//     const response = await fetch(`${STRAPI_URL}/api/solucoes?filters[slug][$eq]=${slug}&populate=*`);
+//     const response = await fetch(`${baseUrl}/api/solucoes?filters[slug][$eq]=${slug}&populate=*`);
 //     if (!response.ok) {
 //       throw new Error('Failed to fetch solucao by slug');
 //     }
@@ -44,7 +58,7 @@
 
 // export async function getDepoimentos() {
 //   try {
-//     const response = await fetch(`${STRAPI_URL}/api/depoimentos?populate=*`);
+//     const response = await fetch(`${baseUrl}/api/depoimentos?populate=*`);
 //     if (!response.ok) {
 //       throw new Error('Failed to fetch depoimentos');
 //     }
@@ -62,6 +76,7 @@ import {
   SolucoesResponse,
   Solucao,
   DepoimentosResponse,
+  HeaderResponse,
 } from "@/types";
 
 /**

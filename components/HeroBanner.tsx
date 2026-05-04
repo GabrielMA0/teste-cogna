@@ -13,7 +13,7 @@ interface HeroBannerProps {
   ativo: boolean;
 }
 
-export const HeroBanner = () => {
+export function HeroBanner() {
 
     const [bannerData, setBannerData] = useState<HeroBannerProps | null>(null);
 
