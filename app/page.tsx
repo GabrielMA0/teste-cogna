@@ -6,8 +6,6 @@ export default async function Page() {
 
   const page = await getPage("inicio");
 
-  console.log('Page data:', page); // Log para verificar os dados retornados
-
   if (!page) return notFound();
 
   return (

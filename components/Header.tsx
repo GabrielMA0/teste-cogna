@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {getHeader} from "@/services/strapi";
+import {getHeader } from "@/services/strapi";
 
 export interface MenuItem {
   id: number;
@@ -19,14 +19,14 @@ export interface HeaderProps {
 }
 
 export async function Header() {
-    
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     const headerData: HeaderProps | null = await getHeader();
 
     if (!headerData) return null;
 
     const { logo, menu } = headerData;
+
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
     
   return (
     <header className="bg-[#ffff] centered gap-5 relative text-neutral px-5 py-10 flex flex-col md:flex-row items-center justify-center border-b border-black/20">

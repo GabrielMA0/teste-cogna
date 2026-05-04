@@ -27,7 +27,7 @@ interface SolutionsSectionProps {
 export async function SolutionsSection(props: SolutionsSectionProps) {
     const { ctaTitulo, descricao, cardSolucao } = props;
 
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
     return(
         <section className="px-5 md:px-10 py-10 gap-16 flex flex-col items-center">
