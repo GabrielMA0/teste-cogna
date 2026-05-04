@@ -12,8 +12,7 @@ export default async function SlugPage({
   const page = await getPage(slug, categoria);
 
   console.log("Page data:", page); // Debugging line
-
-  console.log("STRAPI URL:", process.env.NEXT_PUBLIC_STRAPI_URL);
+  console.log(categoria, slug); // Debugging line
 
   if (!page) return notFound();
 

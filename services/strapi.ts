@@ -3,21 +3,17 @@ const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 export async function getPage(slug: string, categoria?: string) {
   const query = `
     query GetPage($slug: String!, $categoria: String) {
-      pages(
-        filters: {
-          slug: { eq: $slug }
-          ${categoria ? "categoria: { eq: $categoria }" : ""}
-        }
-      ) {
+      pages(filters: {
+        slug: { eq: $slug }
+        categoria: { eq: $categoria }
+      }) {
         documentId
         slug
         categoria
         seo {
           titulo
           descricao
-          ogImage {
-            url
-          }
+          ogImage { url }
         }
         body {
           __typename
@@ -100,17 +96,20 @@ export async function getPage(slug: string, categoria?: string) {
     }
   `;
 
+  const variables: any = {
+    slug,
+    categoria: categoria ?? null,
+  };
+
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       query,
-      variables: {
-        slug,
-        ...(categoria ? { categoria } : {}),
-      },
+      variables,
     }),
   });
 
@@ -121,14 +120,7 @@ export async function getPage(slug: string, categoria?: string) {
     return null;
   }
 
-  const page = json.data?.pages?.[0];
-
-  if (!page) {
-    console.error("No page found:", json);
-    return null;
-  }
-
-  return page;
+  return json.data?.pages?.[0] ?? null;
 }
 
 async function safeFetch(query: string, variables?: any) {
