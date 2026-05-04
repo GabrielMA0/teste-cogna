@@ -89,6 +89,7 @@ Durante o desenvolvimento, foram utilizadas as seguintes ferramentas de apoio:
     - Autocompletar código no desenvolvimento
     - Auxílio na escrita de funções e componentes React
     - Agilidade na implementação de padrões repetitivos
+    - Commits semânticos
 
 - **Google Stitch**
     - Criação do design inicial da interface
