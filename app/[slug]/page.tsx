@@ -1,8 +1,10 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getSolucaoBySlug } from "@/services/strapi";
-import {RadioIcon, ArrowIcon} from "@/components/ui/icons";
-import { Button } from "@/components/ui";
+// import { getSolucaoBySlug } from "@/services/strapi";
+// import {RadioIcon, ArrowIcon} from "@/components/ui/icons";
+// import { Button } from "@/components/ui";
+import { getPage } from "@/services/strapi";
+import { RenderBlocks } from "@/components";
 
 export default async function SolucaoPage({
   params,
@@ -11,15 +13,16 @@ export default async function SolucaoPage({
 }) {
   const { slug } = await params;
 
-  const solucao = await getSolucaoBySlug(slug);
+  const page = await getPage(slug);
 
-  if (!solucao) {
-    notFound();
-  }
+  if (!page) return notFound();
+
+//   const solucao = await getSolucaoBySlug(slug);
   
   return (
     <main>
-        <section className="relative py-10 px-5">
+        <RenderBlocks blocks={page.body} />
+        {/* <section className="relative py-10 px-5">
             <div className="static md:absolute left-5 top-5 ">
                 <Button text="Voltar" url="/solucoes" iconLeft={<ArrowIcon />} className="p-2.5! md:p-5!" />
             </div>
@@ -53,7 +56,7 @@ export default async function SolucaoPage({
                 </li>
             ))}
         </ul>
-        </section>
+        </section> */}
     </main>
   );
 }

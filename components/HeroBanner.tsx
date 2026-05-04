@@ -1,54 +1,33 @@
-'use client';
-
-import { getHeroBanner } from "@/services/strapi";
-import { useEffect, useState } from "react";
 import {Button} from "@/components/ui";
 
 interface HeroBannerProps {
-  titulo: string;
+  heroTitulo: string;
   subtitulo: string;
   textoCta: string;
   urlCta: string;
-  imagemFundo: string;
+  imagemFundo: {
+    url: string;
+  };
   ativo: boolean;
 }
 
-export function HeroBanner() {
+export function HeroBanner(props: HeroBannerProps) {
+  
+  const { heroTitulo, subtitulo, textoCta, urlCta, imagemFundo, ativo } = props;
 
-    const [bannerData, setBannerData] = useState<HeroBannerProps | null>(null);
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-    useEffect(() => {
-        async function fetchBanner() {
-            const data = await getHeroBanner();
-            if (data) {
-                setBannerData({
-                    titulo: data.data.attributes.titulo,
-                    subtitulo: data.data.attributes.subtitulo,
-                    textoCta: data.data.attributes.textoCta,
-                    urlCta: data.data.attributes.urlCta,
-                    imagemFundo: data.data.attributes.imagemFundo.data.attributes.url,
-                    ativo: data.data.attributes.ativo
-                });
-            }
-        }
-        fetchBanner();
-    }, []);
+  if (!ativo) return null;
 
-    if (!bannerData) return null;
-
-    const { titulo, subtitulo, textoCta, urlCta, imagemFundo, ativo } = bannerData;
-
-    if (!ativo) return null;
-
-    return (
+  return (
     <section
       className="relative h-screen bg-cover bg-center flex items-center"
-      style={{ backgroundImage: `url(${imagemFundo})` }}
+      style={{ backgroundImage: `url(${baseUrl + imagemFundo.url})` }}
     >
       <div className="absolute inset-0 bg-black/30"></div>
       <div className="pl-5 md:pl-15 w-full md:w-180 flex flex-col gap-5 relative z-10 text-white px-4">
         <div className="flex flex-col gap-1">
-            <h1>{titulo}</h1>
+            <h1>{heroTitulo}</h1>
             <p>{subtitulo}</p>
         </div>
         <Button

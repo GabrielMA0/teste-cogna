@@ -1,21 +1,24 @@
 import { CardTestimonials } from "./ui/CardTestimonials";
-import { getDepoimentos } from "@/services/strapi";
-import { DepoimentosResponse, Depoimento} from "@/types";
+import { DepoimentoAttributes} from "@/types";
 
-export async function Testimonials() {
-    const testimonials: DepoimentosResponse = await getDepoimentos();
+interface TestimonialsProps {
+    depoimentos: DepoimentoAttributes[];
+}
+
+export async function Testimonials(props: TestimonialsProps) {
+    const {depoimentos} = props
 
     return(
         <section className="px-5 md:px-10 py-25 bg-[#EAEEEF]">
             <div className="flex flex-wrap w-full gap-5 md:justify-center">
-                {testimonials.data.map((testimonial: Depoimento) => (
+                {depoimentos.map((testimonial: DepoimentoAttributes, index) => (
                     <CardTestimonials
-                        key={testimonial.id}
-                        authorName={testimonial.attributes.nomeAutor}
-                        authorRole={testimonial.attributes.cargoEmpresa}
-                        text={testimonial.attributes.texto}
-                        rating={testimonial.attributes.avaliacao}
-                        photo={testimonial.attributes.foto.data.attributes.url}
+                        key={index}
+                        authorName={testimonial.nomeAutor}
+                        authorRole={testimonial.cargoEmpresa}
+                        text={testimonial.texto}
+                        rating={testimonial.avaliacao}
+                        photo={testimonial.foto.url}
                     />
                 ))}
             </div>

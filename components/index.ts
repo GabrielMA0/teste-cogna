@@ -4,3 +4,6 @@ export { HeroBanner } from './HeroBanner';
 export { SolutionsSection } from './SolutionsSection';
 export { Testimonials } from './Testimonials';
 export { CTASection } from './CTASection';
+export { RenderBlocks } from './RenderBlocks';
+export { EducationHeroSection } from './EducationHeroSection';
+export { BenefitsSolutions } from './BenefitsSolutions';

@@ -1,40 +1,37 @@
 import { CardSolutions } from "@/components/ui";
-import { getSolucoes } from "@/services/strapi";
-import {SolucoesResponse, Solucao} from "@/types";
+import { SolucaoAttributes } from "@/types";
+interface SolutionsSectionProps {
+    ctaTitulo?: string;
+    descricao?: string;
+    cardSolucao: SolucaoAttributes[];
+}
 
-export async function SolutionsSection({title, showAudience, showBtnSolucoes}: {title?: string, showAudience?: boolean, showBtnSolucoes?: boolean}) {
-    const solucoes: SolucoesResponse = await getSolucoes();
+export async function SolutionsSection(props: SolutionsSectionProps) {
+    const { ctaTitulo, descricao, cardSolucao } = props;
 
-    // const btns = [
-    //     {
-    //         text: 'Saiba mais',
-    //         url: '/solucoes/slug-da-solucao',
-    //         variant: 'secondary'
-    //     },
-    //     {
-    //         text: 'Soluções',
-    //         url: '/solucoes',
-    //         variant: 'secondary'
-    //     }
-    // ]
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
 
     return(
         <section className="px-5 md:px-10 py-10 gap-16 flex flex-col items-center">
-            {title && (
-                <h2 className="text-primary">{title}</h2>
-            )}
+            <div className="max-w-179 text-center flex flex-col gap-5">
+                {ctaTitulo && (
+                    <h2 className="text-primary">{ctaTitulo}</h2>
+                )}
+                {descricao && (
+                    <p className="text-neutral">{descricao}</p>
+                )}
+            </div>
+            
             <div className="flex gap-6 flex-wrap justify-center">
-                {solucoes.data.map((solucao: Solucao, index) => (
+                {cardSolucao.map((solucao: SolucaoAttributes, index) => (
                     <CardSolutions
                         key={index}
-                        title={solucao.attributes.nome}
-                        description={solucao.attributes.descricaoBreve}
-                        icon={solucao.attributes.icone.data.attributes.url}
-                        slug={solucao.attributes.slug}
-                        emphasis={solucao.attributes.destaque}
-                        audience={solucao.attributes.publicoAlvo}
-                        showAudience={showAudience}
-                        showBtnSolucoes={showBtnSolucoes}
+                        title={solucao.nome}
+                        description={solucao.descricaoBreve}
+                        icon={baseUrl + solucao.icone.url}
+                        buttons={solucao.botoes}
+                        emphasis={solucao.destaque}
+                        audience={solucao.publicoAlvo}
                     />
                 ))}
             </div>
