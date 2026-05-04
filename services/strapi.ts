@@ -40,6 +40,7 @@ export async function getPage(slug: string, categoria?: string) {
             textoBotao
             urlBotao
           }
+          destaque
         }
       }
 
