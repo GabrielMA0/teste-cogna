@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📘 Teste Cogna
 
-## Getting Started
+## 🚀 Visão geral do projeto
 
-First, run the development server:
+Este projeto é uma aplicação full-stack baseada em:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js (App Router) no frontend
+- Strapi (Headless CMS) no backend
+- GraphQL API para comunicação entre frontend e CMS
+- Render para deploy do backend e frontend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O objetivo é gerar páginas dinâmicas baseadas em conteúdo do CMS, com SEO completo e estrutura escalável.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧱 Stack utilizada
 
-## Learn More
+### Frontend
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16 (App Router)
+- TypeScript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Strapi v5
+- GraphQL plugin
 
-## Deploy on Vercel
+### Infra
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Render (Strapi/Next.js)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📁 Estrutura de rotas
+
+/categoria → Página hub (ex: soluções)
+/categoria/slug → Página dinâmica (conteúdo)
+
+Exemplo:
+
+/solucoes  
+/solucoes/ensino-superior
+
+---
+
+## ⚙️ Funcionalidades implementadas
+
+### 🧩 CMS dinâmico (Strapi)
+
+- Criação de páginas via Strapi
+- Componentes reutilizáveis (Hero, CTA, Soluções etc.)
+- Renderização baseada em \_\_typename
+
+---
+
+### 🔌 Integração GraphQL
+
+- Queries dinâmicas (getPage)
+- Filtros por slug e categoria
+- Consumo de API Strapi no Next.js
+
+---
+
+### 🧱 Renderização de blocos
+
+Sistema de componentes dinâmicos:
+
+- HeroBanner
+- SolutionsSection
+- Testimonials
+- CTA Section
+- Education Hero
+- Benefits Section
+
+---
+
+## 🤖 Ferramentas utilizadas (IA e apoio)
+
+Durante o desenvolvimento, foram utilizadas as seguintes ferramentas de apoio:
+
+- **ChatGPT**
+    - Auxílio na resolução de erros
+    - Melhoria de arquitetura do projeto
+    - Criação e evolução do design system
+    - Suporte na integração Next.js + Strapi
+    - Explicação de conceitos de SEO, deploy e GraphQL
+
+- **GitHub Copilot**
+    - Autocompletar código no desenvolvimento
+    - Auxílio na escrita de funções e componentes React
+    - Agilidade na implementação de padrões repetitivos
+
+- **Google Stitch**
+    - Criação do design inicial da interface
+    - Prototipação visual do projeto
+    - Base para estrutura de UI/UX
+
+---
+
+## 🎨 Design utilizado
+
+O design do projeto foi criado no Figma abaixo:
+
+🔗 https://www.figma.com/design/0deL1E3Dmblv4Nm2eImN78/Teste-Cogna-Educa%C3%A7%C3%A3o?node-id=0-1&t=flwPG7h5BLPjR4A6-1
+
+---
+
+## 🚀 Deploy do projeto
+
+### Frontend (Next.js)
+
+🔗 https://teste-cogna.onrender.com
+
+### Backend (Strapi)
+
+🔗 https://teste-cogna-backend-strapi.onrender.com/admin
+
+---
+
+## 📌 Resultado final
+
+O projeto entrega:
+
+- CMS totalmente editável via Strapi
+- Páginas dinâmicas geradas automaticamente
+- SEO completo por página (title, description, OG)
+- Estrutura escalável de componentes
+- Deploy funcional em ambiente de produção

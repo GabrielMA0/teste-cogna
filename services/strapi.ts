@@ -7,6 +7,13 @@ export async function getPage(slug: string, categoria?: string) {
     documentId
     slug
     categoria
+    seo {
+      titulo
+      descricao
+      ogImage{
+        url
+      }
+    }
     body {
       __typename
 
