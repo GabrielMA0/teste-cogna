@@ -16,11 +16,10 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "localhost",
         port: "1337",
+        pathname: '/uploads/**',
       }
-    ],
-
-    domains: ["localhost"],
+    ]
   },
 };
-  
+
 export default nextConfig;
