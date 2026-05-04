@@ -15,6 +15,8 @@ export default async function CategoryPage({
 
   if (!page) return notFound();
 
+  console.log("STRAPI URL:", process.env.NEXT_PUBLIC_STRAPI_URL);
+
   return (
     <main>
       <RenderBlocks blocks={page.body} />

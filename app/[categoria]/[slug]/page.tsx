@@ -13,6 +13,8 @@ export default async function SlugPage({
 
   console.log("Page data:", page); // Debugging line
 
+  console.log("STRAPI URL:", process.env.NEXT_PUBLIC_STRAPI_URL);
+
   if (!page) return notFound();
 
   return (
