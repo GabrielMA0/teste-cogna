@@ -1,6 +1,14 @@
 import { CTASection, HeroBanner, SolutionsSection, Testimonials, EducationHeroSection, BenefitsSolutions} from '@/components';
 
-const componentMap = {
+
+type ComponentKey = keyof typeof componentMap;
+
+type Block = {
+  __typename: ComponentKey;
+  [key: string]: any;
+};
+
+const componentMap: Record<string, React.ComponentType<any>>  = {
   ComponentSectionsHeroBannerSection: HeroBanner,
   ComponentSectionsSolucoes: SolutionsSection,
   ComponentSectionsDepoimentos: Testimonials,
@@ -9,7 +17,7 @@ const componentMap = {
   ComponentSectionsBeneficiosSecao: BenefitsSolutions
 };
 
-export function RenderBlocks({ blocks }: { blocks: any[] }) {
+export function RenderBlocks({ blocks }: { blocks: Block[] }) {
   if (!blocks?.length) return null;
 
   return blocks.map((block, index) => {
