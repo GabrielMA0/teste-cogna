@@ -276,8 +276,6 @@ async function safeFetch(query: string, variables?: VariablesProps) {
 
   const json = await res.json();
 
-  console.log("GraphQL Response:", json); // Debugging line
-
   if (json.errors) {
     console.error("GraphQL Error:", json.errors);
     return null;

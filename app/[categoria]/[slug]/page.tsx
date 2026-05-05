@@ -7,12 +7,9 @@ export default async function SlugPage({
 }: {
   params: Promise<{ slug: string, categoria: string }>
 }) {
-  const { categoria, slug } = await params;
+  const { categoria } = await params;
 
   const page = await getPageCategory(categoria);
-
-  console.log("Page data:", page); // Debugging line
-  console.log(categoria, slug); // Debugging line
 
   if (!page) return notFound();
 
