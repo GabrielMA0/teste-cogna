@@ -1,11 +1,15 @@
 const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
+interface VariablesProps {
+  slug?: string;
+  categoria?: string | null;
+}
+
 export async function getPage(slug: string, categoria?: string) {
   const query = `
-    query GetPage($slug: String!, $categoria: String) {
+    query GetPage($slug: String!) {
       pages(filters: {
         slug: { eq: $slug }
-        categoria: { eq: $categoria }
       }) {
         documentId
         slug
@@ -96,9 +100,8 @@ export async function getPage(slug: string, categoria?: string) {
     }
   `;
 
-  const variables: any = {
-    slug,
-    categoria: categoria ?? null,
+  const variables: VariablesProps = {
+    slug
   };
 
   const res = await fetch(`${baseUrl}/graphql`, {
@@ -224,7 +227,7 @@ export async function getPageCategory(categoria?: string) {
     }
   `;
 
-  const variables: any = {
+  const variables: VariablesProps = {
     categoria: categoria ?? null,
   };
 
@@ -256,7 +259,7 @@ export async function getPageCategory(categoria?: string) {
   return json.data?.pages?.[0] ?? null;
 }
 
-async function safeFetch(query: string, variables?: any) {
+async function safeFetch(query: string, variables?: VariablesProps) {
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
     headers: {
@@ -272,6 +275,8 @@ async function safeFetch(query: string, variables?: any) {
     }
 
   const json = await res.json();
+
+  console.log("GraphQL Response:", json); // Debugging line
 
   if (json.errors) {
     console.error("GraphQL Error:", json.errors);
@@ -293,7 +298,7 @@ export async function getFooter() {
           socialNetwork
           url
         }
-        link {
+        links {
           label
           url
         }
@@ -308,11 +313,11 @@ export async function getFooter() {
 export async function getHeader() {
   const query = `
     query GetHeader {
-      menu {
+      header {
         logo {
           url
         }
-        menu {
+        linksMenu {
           label
           url
         }
@@ -321,5 +326,5 @@ export async function getHeader() {
 
   const data = await safeFetch(query);
 
-  return data?.menu ?? null;
+  return data?.header;
 }

@@ -13,8 +13,6 @@ interface EducationHeroSectionProps {
 export function EducationHeroSection(props: EducationHeroSectionProps) {
     const { titulo, descricao, icone, publicoAlvo } = props;
 
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-
     return(
         <section className="relative py-10">
             <Button iconLeft={<ArrowIcon />} text="Voltar" variant="primary" url="/solucoes" className="absolute left-5 top-5 p-2.5! md:p-5!"/>

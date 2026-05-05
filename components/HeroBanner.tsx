@@ -15,8 +15,6 @@ export function HeroBanner(props: HeroBannerProps) {
   
   const { heroTitulo, subtitulo, textoCta, urlCta, imagemFundo, ativo } = props;
 
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-
   if (!ativo) return null;
 
   return (

@@ -19,7 +19,7 @@ interface FooterData {
     };
     copyright: string;
     socialLink: FooterSocialLink[];
-    link: FooterLink[];
+    links: FooterLink[];
 }
 
 export async function Footer() {
@@ -27,14 +27,12 @@ export async function Footer() {
 
   if (!footerData) return null;
 
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-
   const logoUrl = footerData.logo?.url
     ? footerData.logo.url
     : null;
 
   const socialLink = footerData.socialLink ?? [];
-  const links = footerData.link ?? [];
+  const links = footerData.links ?? [];
 
   return (
     <footer className="bg-neutral py-15 px-9">

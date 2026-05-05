@@ -15,7 +15,7 @@ export interface HeaderProps {
   updatedAt: string;
   publishedAt: string;
   logo: {url: string};
-  menu: MenuItem[];
+  linksMenu: MenuItem[];
 }
 
 export async function Header() {
@@ -23,13 +23,9 @@ export async function Header() {
 
   if (!headerData) return null;
 
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const logoUrl = headerData.logo?.url ?? null
 
-  const logoUrl = headerData.logo?.url
-    ? headerData.logo.url
-    : null;
-
-  const menu = headerData.menu ?? [];
+  const menu = headerData.linksMenu ?? [];
 
   return (
     <header className="bg-[#ffff] centered gap-5 relative text-neutral px-5 py-10 flex flex-col md:flex-row items-center justify-center border-b border-black/20">
