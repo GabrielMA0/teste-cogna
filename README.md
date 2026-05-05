@@ -114,7 +114,7 @@ O design do projeto foi criado no Figma abaixo:
 
 ### Backend (Strapi)
 
-🔗 https://teste-cogna-backend-strapi.onrender.com/admin
+🔗 https://perfect-acoustics-ff59d9f611.strapiapp.com/admin
 
 ---
 
