@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getPage } from "@/services/strapi";
+import { getPageCategory, getPage } from "@/services/strapi";
 import { RenderBlocks } from "@/components";
 
 export default async function SlugPage({
@@ -9,7 +9,7 @@ export default async function SlugPage({
 }) {
   const { categoria, slug } = await params;
 
-  const page = await getPage(slug, categoria);
+  const page = await getPageCategory(categoria);
 
   console.log("Page data:", page); // Debugging line
   console.log(categoria, slug); // Debugging line
