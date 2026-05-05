@@ -22,7 +22,7 @@ export function HeroBanner(props: HeroBannerProps) {
   return (
     <section
       className="relative h-screen bg-cover bg-center flex items-center"
-      style={{ backgroundImage: `url(${baseUrl + imagemFundo.url})` }}
+      style={{ backgroundImage: `url(${imagemFundo.url})` }}
     >
       <div className="absolute inset-0 bg-black/30"></div>
       <div className="pl-5 md:pl-15 w-full md:w-180 flex flex-col gap-5 relative z-10 text-white px-4">

@@ -30,7 +30,7 @@ export async function Footer() {
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const logoUrl = footerData.logo?.url
-    ? baseUrl + footerData.logo.url
+    ? footerData.logo.url
     : null;
 
   const socialLink = footerData.socialLink ?? [];

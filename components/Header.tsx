@@ -26,7 +26,7 @@ export async function Header() {
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const logoUrl = headerData.logo?.url
-    ? baseUrl + headerData.logo.url
+    ? headerData.logo.url
     : null;
 
   const menu = headerData.menu ?? [];

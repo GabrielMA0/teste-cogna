@@ -46,7 +46,7 @@ export async function SolutionsSection(props: SolutionsSectionProps) {
                         key={index}
                         title={solucao.nome}
                         description={solucao.descricaoBreve}
-                        icon={baseUrl + solucao.icone.url}
+                        icon={solucao.icone.url}
                         buttons={solucao.botoes}
                         emphasis={solucao.destaque}
                         audience={solucao.publicoAlvo}
