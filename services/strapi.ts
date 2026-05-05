@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export async function getPage(slug: string, categoria?: string) {
   const query = `
@@ -112,6 +112,12 @@ export async function getPage(slug: string, categoria?: string) {
       variables,
     }),
   });
+
+  if (!res.ok) {
+      const text = await res.text(); // lê como texto pra debug
+      console.error("HTTP Error:", res.status, text);
+      return null;
+    }
 
   const json = await res.json();
 
@@ -234,6 +240,12 @@ export async function getPageCategory(categoria?: string) {
     }),
   });
 
+  if (!res.ok) {
+      const text = await res.text(); // lê como texto pra debug
+      console.error("HTTP Error:", res.status, text);
+      return null;
+    }
+
   const json = await res.json();
 
   if (json.errors) {
@@ -252,6 +264,12 @@ async function safeFetch(query: string, variables?: any) {
     },
     body: JSON.stringify({ query, variables }),
   });
+
+  if (!res.ok) {
+      const text = await res.text(); // lê como texto pra debug
+      console.error("HTTP Error:", res.status, text);
+      return null;
+    }
 
   const json = await res.json();
 
