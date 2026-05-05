@@ -11,11 +11,9 @@ export default async function CategoryPage({
 
   const page = await getPage(categoria);
 
-  if(page.categoria) return notFound();
-
   if (!page) return notFound();
 
-  console.log("STRAPI URL:", process.env.NEXT_PUBLIC_STRAPI_URL);
+  if(page.categoria) return notFound();
 
   return (
     <main>
